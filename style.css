@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: rgb(35, 59, 35);
+}
+
+article {
+    margin: 5em 6em;
+    color: darkslategrey;
+    background-color: rgb(241, 233, 223);
+    padding: 3em;
+    border-radius: 2em;
+}
+
+article:nth-of-type(1) {
+    margin-bottom: 1em;
+    place-items: center;
+    
+}
+
+article:nth-of-type(2) {
+    margin-top: 0;
+}
