@@ -1,4 +1,6 @@
 // mongodb start
+require('dotenv').config();
+
 const { MongoClient, ObjectID } = require("mongodb");
 const uri = process.env.URI;
 
@@ -69,14 +71,9 @@ function login(req, res){
     res.render("pages/login");
 }
 
-function loggedin(req, res){
-    const { username, password, birthday, color, age, children } = req.body;
-
-    console.log(req.body); // Bekijk wat er precies binnenkomt in de console
-
-    res.render("pages/loggedin", {
-        username, password, birthday, color, age, children
-    });
+function loggedin(req, res) {
+    console.log(req.body);
+    res.render("pages/loggedin", req.body);
 }
 
 x.use((req, res) => {
