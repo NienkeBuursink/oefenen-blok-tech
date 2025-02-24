@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    <main>
+      <article>
+        <h1>Verzonden Login Gegevens</h1><br>
+        <p><strong>Gebruikersnaam:</strong> <%= username %></p>
+        <p><strong>Wachtwoord:</strong> <%= password %></p>
+        <p><strong>Verjaardag:</strong> <%= birthday %></p>
+        <p><strong>Lievelingskleur:</strong> <%= color %></p>
+        <p><strong>Leeftijd:</strong> <%= age %></p>
+        <p><strong>Kinderen:</strong> <%= children %></p>
+        <a href="/login">Terug naar login</a>
+      </article>
+    </main>
+    <footer>
+      <%- include('../partials/footer'); %>
+    </footer>
+</body>
