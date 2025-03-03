@@ -16,6 +16,7 @@ async function connectDB() {
     }
 }
 
+connectDB();
 
 
 // express
@@ -29,7 +30,8 @@ x.use(express.urlencoded({extended: true}));
 x.get("/", onhome);
 x.get("/about", about);
 x.get("/login", login);
-x.post("/login", loggedin)
+x.get("/harrypotter", showApi);
+x.post("/login", loggedin);
 
 x.listen(8000)
 x.use("/static", express.static("static"));
@@ -68,15 +70,33 @@ function about(req, res){
 }
 
 function login(req, res){
+    console.log(req.body);
     res.render("pages/login");
 }
 
-function loggedin(req, res) {
+function showApi(req, res){
     console.log(req.body);
-    res.render("pages/loggedin", req.body);
+    res.render("pages/harrypotter");
 }
 
+async function loggedin(req, res) {
+    try {
+        console.log(req.body);
+        const loginGegevens = db.collection("users");
+        const result = await loginGegevens.insertOne(req.body);
+        res.render("pages/loggedin", req.body);
+    } catch (error) {
+        console.log(error);
+    }
+    
+}
+
+
+
+// error
 x.use((req, res) => {
     res.status(404).render("pages/404", { url: req.url });
 });
+
+
 

@@ -1,0 +1,56 @@
+const baseURL = "https://potterapi-fedeperin.vercel.app";
+const endPoint = "/en/characters";
+const URL = baseURL + endPoint;
+
+const list = document.querySelector('ul');
+const button = document.querySelector('button');
+
+const loader = document.getElementById('loaderDiv');
+
+async function getCharacters() {
+	
+	// STAP 2. start de loader
+	// voeg de class loading toe aan de loader div
+	// daarna met css de loader tonen
+	loader.classList.add("loading");
+	
+	
+	// Haal de Amiibo's op
+	const response = await fetch(URL);
+    const data = await response.json(); 
+    console.log(data); // Debugging line to check response structure
+	const allCharacters = data;
+		
+	// STAP 5. voeg opzettelijk een delay toe
+	// dat kun je doen met setTimeout
+	// nb. in het echt natuurlijk niet doen :-)
+	await new Promise((resolve) => setTimeout(resolve, 3000)) // Voeg     deze regel toe om het laden van de API data te vertragen
+ 
+	//voeg de amiibo's toe aan de ul	
+	allCharacters.forEach(function(aCharacter) {
+		let characterListElement = 
+				`
+							<li>
+								<h2>${aCharacter.fullName}</h2>
+                                <p>${aCharacter.hogwartsHouse}
+								<img src="${aCharacter.image}" alt="${aCharacter.fullName}">
+							</li>
+					`;
+		list.insertAdjacentHTML('beforeend', characterListElement);
+	})
+
+
+	// STAP 4. stop de loader als de data ontvangen en verwerkt is
+	// verwijder de class loading weer van de loader div
+	loader.classList.remove("loading");
+}
+
+
+
+
+
+/*********/
+/* START */
+/*********/
+
+button.onclick = getCharacters;

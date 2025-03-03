@@ -1,0 +1,30 @@
+#loaderDiv {
+    background-image: url("loading-image.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* maak er een ronde afbeelding van */
+    border-radius: 50%;
+
+    /* beperk interactie door bezoeker */
+    pointer-events:none;
+    user-select:none;
+
+    /* verberg de loader, zichtbaar maken gebeurt met eenvoudige transitie  */
+    opacity:0;
+    transition:.15s;
+
+    /* animatie tijdens tonen */
+    animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+
+}

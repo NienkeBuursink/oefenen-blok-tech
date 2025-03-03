@@ -23,4 +23,7 @@ article {
     background-color: rgb(255, 255, 255);
     padding: 3em;
     border-radius: 2em;
+    & button {
+        background-color: red;
+    }
 }
